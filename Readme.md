@@ -7,9 +7,11 @@ Documentation of my homelab setup and learning progress
 * [Software](#Software)
     * [Management and documentation tools](#Management-and-documentation-tools)
     * [Hypervisor](#Hypervisor)
-    * [Microsoft servers](#Microsoft-servers)
     * [Firewall appliance](#Firewall-appliance)
     * [Linux](#Linux)
+    * [Windows](#Windows)
+
+
 * [Network](#Network)
     * [vSwitches](#vSwitches-(Hyper-V))
     * [VLANs and subnets](#VLANs-and-subnets)
@@ -27,19 +29,12 @@ So far I've only been using my main [i5-8600K](https://ark.intel.com/content/www
 # Software
 ## Management and documentation tools
 * [KeePass 2](https://keepass.info/) password manager
-* [Royal TS Lite](royalapps.com/ts) remote connection manager (SSH, RDP, VNC and more)
-* [draw.io](draw.io) diagram making
-* [github.com](github.com) source code/documentation version control
+* [Royal TS Lite](https://royalapps.com/ts) remote connection manager (SSH, RDP, VNC and more)
+* [draw.io](https://draw.io) diagram making
+* [github.com](https://github.com) source code/documentation version control
 
 ## Hypervisor
 * [Windows 10 Education](https://www.microsoft.com/en-us/windowsforbusiness/compare) (which is [basically Enterprise edition with disabled ads](https://docs.microsoft.com/en-us/education/windows/windows-editions-for-education-customers#windows-10-education)) with Hyper-V feature installed
-
-## Microsoft servers
-* [Windows Server 2016](https://docs.microsoft.com/en-us/windows-server/get-started/server-basics) Datacenter with various roles:
-    * Active Directory Domain Services
-    * DNS Server
-    * DHCP Server
-    * Remote Desktop Services
 
 ## Firewall appliance
 * [pfSense](https://www.pfsense.org)
@@ -48,6 +43,13 @@ So far I've only been using my main [i5-8600K](https://ark.intel.com/content/www
 ## Linux
 * [CentOS 8](https://www.centos.org/)
 * [Ubuntu Server 20.04 LTS](https://ubuntu.com/download/server)
+
+## Windows
+* [Windows Server 2016](https://docs.microsoft.com/en-us/windows-server/get-started/server-basics) Datacenter with various roles:
+    * Active Directory Domain Services
+    * DNS Server
+    * DHCP Server
+    * Remote Desktop Services
 
 # Network
 
