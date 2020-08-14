@@ -58,7 +58,7 @@ For detailed ACLs/firewall polices and rules check out [FWRules.csv](FWRules.csv
 * [LAB-GW-02](LAB-GW-02.md) - main gateway
 * LAB-DC-01 - primary AD controler and DNS server for homelab.local domain
 * LAB-HC-01 - DHCP server
-* LAB-LOGGER-01 - Syslog and monitoring
+* [LAB-LOGGER-01](LAB-LOGGER-01.md) - Syslog and monitoring
 * LAB-WK-01 - client for connections to management interfaces of other servers
 * LAB-WK-02 - client for "hypothetical" employee with limited access to internal services
 * ~~LAB-GW-01 - pfSense - main gateway~~ depreciated
