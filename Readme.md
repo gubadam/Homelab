@@ -24,9 +24,9 @@ So far I've only been using my main [i5-8600K](https://ark.intel.com/content/www
 # Software
 ## Management and documentation tools
 * [KeePass 2](https://keepass.info/) password manager
-* [Royal TS Lite](royalapps.com/ts) remote connection manager (SSH, RDP, VNC and more)
-* [draw.io](draw.io) diagram making
-* [github.com](github.com) source code/documentation version control
+* [Royal TS Lite](https://royalapps.com/ts) remote connection manager (SSH, RDP, VNC and more)
+* [draw.io](https://draw.io) diagram making
+* [github.com](https://github.com) source code/documentation version control
 
 ## Hypervisor
 * [Windows 10 Education](https://www.microsoft.com/en-us/windowsforbusiness/compare) (which is [basically Enterprise edition with disabled ads](https://docs.microsoft.com/en-us/education/windows/windows-editions-for-education-customers#windows-10-education)) with Hyper-V feature installed
