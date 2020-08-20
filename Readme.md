@@ -55,27 +55,23 @@ By default all traffic is denied, only allowing for specific traffic based on th
 For detailed ACLs/firewall polices and rules check out [FWRules.csv](FWRules.csv) file
 
 # VMs
-* [LAB-GW-02](LAB-GW-02.md) - main gateway
-* LAB-DC-01 - primary AD controler and DNS server for homelab.local domain
-* LAB-HC-01 - DHCP server
-* [LAB-LOGGER-01](LAB-LOGGER-01.md) - Syslog and monitoring
-* LAB-WK-01 - client for connections to management interfaces of other servers
-* LAB-WK-02 - client for "hypothetical" employee with limited access to internal services
-* ~~LAB-GW-01 - pfSense - main gateway~~ depreciated
+
+Please check out [Servers.csv](Servers.csv) file for information on OS, software, roles and services configured
 
 # Future-considerations
 
 Systems to implement:
 * [x] Gateway/FW (pfSense, replaced by Sophos XG)
-* [x] DC + DNS
-* [x] DHCP
+* [x] DC + DNS (WinSrv)
+* [x] DHCP (WinSrv)
 * [X] Syslog (Graylog)
-* [X] Monitoring (Zabbix, maybe try Nagios?)
+* [X] Monitoring (Zabbix, maybe try Nagios later?)
+* [X] Backup server (Veeam Backup Free Edition)
 * [ ] File server (WinSrv>Linux)
-* [ ] Backup server (?)
+* [ ] Mail server
 * [ ] WSUS
 * [ ] FTP (?)
-* [ ] Automated OS deployment (MDT, ?)
+* [ ] Automated OS deployment (MDT, Ansible)
 * [ ] Centralized endpoint management (ME Desktop Central, ?)
 * [ ] Webserver (hosting mediawiki)
 * [ ] more
