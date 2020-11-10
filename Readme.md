@@ -1,62 +1,61 @@
 # Homelab
+
 Documentation of my homelab setup and learning progress
 
 # Table of contents
-* [Goal](#goal)
-* [Hardware](#Hardware)
-* [Software](#Software)
-    * [Management and documentation tools](#Management-and-documentation-tools)
-    * [Hypervisor](#Hypervisor)
+
+* [Goal](#Goal)
+* [Servers](#Servers)
 * [Network](#Network)
-    * [vSwitches](#vSwitches-(Hyper-V))
-    * [Diagram](#Diagram)
-    * [ACLs](#ACLs)
-* [VMs](#VMs)
+* [Diagram](#Diagram)
+* [Tools](#Tools)
 * [Future considerations](#Future-considerations)
 
 # Goal
+
 1. Create a base environment for testing and learning about IT systems
 2. Continue exploring
 
-# Hardware
-So far I've only been using my main [i5-8600K](https://ark.intel.com/content/www/us/en/ark/products/129937/intel-core-i5-8600-processor-9m-cache-up-to-4-30-ghz.html) based PC to host all the VMs
+# Servers
 
-# Software
-## Management and documentation tools
-* [KeePass 2](https://keepass.info/) password manager
-* [Royal TS Lite](https://royalapps.com/ts) remote connection manager (SSH, RDP, VNC and more)
-* [draw.io](https://draw.io) diagram making
-* [github.com](https://github.com) source code/documentation version control
+| Hostname      | Resources                      | IP             | Location      | Purpose                                         |
+| --------      | ---------                      | --             | --------      | -------                                         |
+| AG-PC-1       | i5-8600K + 32GB DDR4           | 172.20.0.100   | Labroom       | Type 2 hypervisor (HyperV) + main client        |
+| AQ-ESXi-01    | i3-540 + 8GB DDR3              | 172.20.0.3     | Labroom       | Type 1 hypervisor (ESXi)                        |
+| AG-QNAP-1     | 1TB storage RAID-1             | 172.20.0.10    | Labroom       | -Not-in-use-                                    |
+| LAB-GW-02     | 1 vCPU + 4GB vRAM              | 172.20.0.200   | AG-PC-1       | Gateway firewall + VPN concentrator (Sophos XG) |
+| LAB-Docker-01 | 2 vCPU + 4GB vRAM              | 172.20.0.201   | AQ-ESXi-01    | Docker host                                     |
+| gitlab_web_1  | -                              | -              | LAB-Docker-01 | Gitlab container                                | 
+| LAB-WK-01     | 1 vCPU + 2GB vRAM              | 192.168.100.x  | AG-PC-1       | Client desktop (Windows 10)                     |
+| LAB-WK-02     | 1 vCPU + 2GB vRAM              | 192.168.100.x  | AG-PC-1       | Client desktop (Ubuntu 20)                      |
+| LAB-DC-01     | 1 vCPU + 4GB vRAM              | 192.168.101.10 | AG-PC-1       | ADDS + DNS + DHCP (Windows Server 2016)         |
+| LAB-LOGGER-01 | 1 vCPU + 4GB vRAM              | 192.168.101.30 | AG-PC-1       | Syslog (Graylog) + Network monitor (Zabbix)     |
+| LAB-BACKUP-01 | 1 vCPU + 4GB vRAM              | 192.168.101.20 | AG-PC-1       | Backup (Veeam Backup&Replication 10 CE)         |
+| GCP-pfsense   | 1 vCPU + 0.6GB vRAM (f1-micro) | 10.132.0.2     | GCP cloud     | Gateway firewall + VPN concentrator (pfSense)   |
 
-## Hypervisor
-* [Windows 10 Education](https://www.microsoft.com/en-us/windowsforbusiness/compare) (which is [basically Enterprise edition with disabled ads](https://docs.microsoft.com/en-us/education/windows/windows-editions-for-education-customers#windows-10-education)) with Hyper-V feature installed
 
 # Network
 
-## vSwitches (Hyper-V)
-* EXT
-    * bridged to hardware NIC of the host computer
-    * connected only to the main gateway server as a WAN zone
-* PRV
-    * connected to every VM in the homelab as LAN adapter
-    * have IEEE 802.1Q tagging enabled
-    * connected to main gateway with a trunk link allowing all VLAN IDs, other hosts are connected via access links to a single VLAN per NIC
+| VLAN ID | Subnet           | Description    |
+| ------- | ------           | -----------    |
+| 0       | 172.20.0.0/24    | Home network   |
+| 100     | 192.168.100.0/24 | Clients        |
+| 101     | 192.168.101.0/24 | Infrastructure |
+| 0       | 10.132.0.0/20    | Cloud lab      |
 
-## Diagram
 
-![Diagram](img/NetworkDiagram.jpg?raw=true)
+# Diagram
 
-## ACLs
+![Diagram](img/Diagram.png?raw=true)
 
-All hosts other then the lab gateway itself are only connected to virtual network (PRV), so all external (and also intervlan) traffic comes through the gateway.
+# Tools
 
-By default all traffic is denied, only allowing for specific traffic based on the network subnet purpose.
-
-For detailed ACLs/firewall polices and rules check out [FWRules.csv](FWRules.csv) file
-
-# VMs
-
-Please check out [Servers.csv](Servers.csv) file for information on OS, software, roles and services configured
+| Name                                          | Purpose                                               |
+| ----                                          | -------                                               |
+| [KeePass 2](https://keepass.info/)            | Password manager                                      |
+| [Royal TS Lite](https://royalapps.com/ts)     | Remote connection manager (SSH, RDP, VNC and more)    |
+| [draw.io](https://draw.io)                    | Diagram making                                        |
+| [github.com](https://github.com)              | Documentation version control                         |
 
 # Future-considerations
 
@@ -74,6 +73,7 @@ Systems to implement:
 * [ ] Automated OS deployment (MDT, Ansible)
 * [ ] Centralized endpoint management (ME Desktop Central, ?)
 * [ ] Webserver (hosting mediawiki)
+* [ ] Vulnerability scanner (Nessus)
 * [ ] more
 
 Improvements:
